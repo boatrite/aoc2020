@@ -1,4 +1,4 @@
-DAYS = 1 2
+DAYS = 1 2 3
 
 all: $(addprefix build/day, $(DAYS))
 run_all: $(addprefix run_day, $(DAYS))
@@ -14,6 +14,7 @@ clean:
 CC = g++-10
 CXXFLAGS = -std=c++20 \
 				 -pedantic-errors -Wall -Weffc++ -Wextra -Wsign-conversion
+DBG_CFLAGS = -g -O0 -DNDEBUG=0 # Debug
 
 #
 # Build Template
@@ -30,7 +31,7 @@ day$(1): build/day$(1)
 .PHONY: watch_day$(1) run_day$(1) day$(1)
 
 build/day$(1): src/day$(1).cpp | build
-	$$(CC) $$(CXXFLAGS) -o $$@ $$<
+	$$(CC) $$(CXXFLAGS) $$(DBG_CFLAGS) -o $$@ $$<
 
 endef
 
