@@ -11,8 +11,8 @@ clean:
 #
 # Compiler flags
 #
-CC = g++
-CFLAGS = -std=c++17 \
+CC = g++-10
+CXXFLAGS = -std=c++20 \
 				 -pedantic-errors -Wall -Weffc++ -Wextra -Wsign-conversion
 
 #
@@ -30,7 +30,7 @@ day$(1): build/day$(1)
 .PHONY: watch_day$(1) run_day$(1) day$(1)
 
 build/day$(1): src/day$(1).cpp | build
-	$$(CC) -o $$@ $$<
+	$$(CC) $$(CXXFLAGS) -o $$@ $$<
 
 endef
 
