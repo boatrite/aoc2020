@@ -4,10 +4,14 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
+
+#include "trim.h"
 
 class File {
   public:
     static std::string read(const std::string path);
+    static std::vector<std::string> readLines(const std::string path);
 };
 
 std::string File::read(const std::string path) {
@@ -32,4 +36,19 @@ std::string File::read(const std::string path) {
   }
 
   return fileContents;
+}
+
+std::vector<std::string> File::readLines(const std::string path) {
+  std::string input = File::read(path);
+  trim(input);
+  std::stringstream ss(input);
+  std::string to;
+
+  std::vector<std::string> lines {};
+
+  while(std::getline(ss, to, '\n')) {
+    lines.push_back(to);
+  }
+
+  return lines;
 }
