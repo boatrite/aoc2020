@@ -31,7 +31,7 @@ std::string File::read(const std::string path) {
     fileStream.close();
 
     fileContents = stringStream.str();
-  } catch (std::ifstream::failure e) {
+  } catch (std::ifstream::failure const&) {
     std::cerr << "ERROR: File not successfully read. Path: " << path << std::endl;
   }
 
