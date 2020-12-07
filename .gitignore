@@ -1,2 +1,4 @@
 build
 .gdb_history
+graph.dot
+graph.png
